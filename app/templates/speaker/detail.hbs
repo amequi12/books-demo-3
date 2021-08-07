@@ -1,0 +1,29 @@
+<div class="details">
+        <div class="d-header">
+            <span>Спикер</span>
+            <div class="d-items">
+                  {{#link-to "speaker.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
+                  {{#link-to "speaker.edit" model.id class="btn btn-blue"}}<span>Редактировать</span>{{/link-to}}
+                  <button onclick={{action "deleteSpeaker" model.id class="btn btn-blue"}}>удалить</button>
+            </div>
+        </div>
+        <div class="d-desc">
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.id}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.firstName}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.middleName}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.lastName}}</h2>
+            </div>
+        </div>
+</div>
+{{outlet}}

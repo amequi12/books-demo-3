@@ -1,0 +1,17 @@
+<div class="container">
+        <div class="menu">
+            <span>Книги</span>
+            {{input type="text" placeholder="Поиск по книгам" value=search class="search field"}}
+            {{#link-to "book.create" class="btn btn-blue"}}Добавить{{/link-to}}
+        </div>
+</div>
+ {{#if isLoading}}
+    <h2>loading</h2>
+  {{else}}
+  <div class="container">
+        {{#each model as |book|}}
+          {{book-item tagName='' bookId=book.id bookName=book.bookName bookAuthor=book.author}}
+        {{/each}}
+    </div>
+{{/if}}
+{{outlet}}

@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "bookName": "book1",
+      "author": "author1",
+      "pagesNumber": 50,
+      "cover": "string",
+      "tags": [
+        "tag1",
+        "tag2"
+      ]
+    },
+    {
+      "id": 2,
+      "bookName": "book2",
+      "author": "author2",
+      "pagesNumber": 50,
+      "cover": "string",
+      "tags": [
+        "tag1",
+        "tag2"
+      ]
+    },
+    {
+      "bookName": "s",
+      "author": "s",
+      "pagesNumber": "s",
+      "cover": "s",
+      "tags": [
+        "s"
+      ],
+      "id": 3
+    }
+  ],
+  "speakers": [
+    {
+      "id": 1,
+      "firstName": "fName12",
+      "middleName": "mName1",
+      "lastName": "lName1"
+    }
+  ]
+}

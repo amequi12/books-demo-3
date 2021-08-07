@@ -1,0 +1,43 @@
+<div class="details">
+        <div class="d-header">
+            <span>Книга</span>
+            <div class="d-items">
+                  {{#link-to "book.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
+                  {{#link-to "book.edit" model.id class="btn btn-blue"}}<span>Редактировать</span>{{/link-to}}
+                  <button onclick={{action "deleteBook" model.id class="btn btn-blue"}}>удалить</button>
+            </div>
+        </div>
+        <div class="d-desc">
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.id}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.bookName}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.author}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.pagesNumber}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Id</span>
+                <h2>{{model.cover}}</h2>
+            </div>
+            <div class="d-desc-item">
+                <span>Tags</span>
+                  {{#each model.tags as |tag|}}
+                        <li>
+                              {{#link-to "book.search-by-tag" tag}}
+                                    {{tag}}
+                              {{/link-to}}
+                        </li>
+                  {{/each}}
+            </div>
+        </div>
+</div>
+{{outlet}}

@@ -1,0 +1,19 @@
+<div class="details">
+        <div class="d-header">
+            <span>Поиск по тегу</span>
+            <div class="d-items">
+                  {{#link-to "book.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
+            </div>
+        </div>
+        <div class="d-desc">
+            {{#each model as |book|}}
+                <div class="d-desc-item">
+                    {{#link-to "book.detail" book.id}}
+                        {{book.id}}
+                        {{book.bookName}}
+                        {{book.author}}
+                    {{/link-to}}
+                </div>
+            {{/each}}
+        </div>
+</div>
