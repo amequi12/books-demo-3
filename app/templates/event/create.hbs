@@ -1,0 +1,18 @@
+<div class="slide-out-bg"></div>
+<div class="slide-out">
+  <div class="slide-out-card">
+    {{#link-to "event" class="btn-back"}}
+      <span class="sr-only">Back</span>
+    {{/link-to}}
+
+    <div class="slide-out-heading">
+      <div class="title">
+        <h3>New Event</h3>
+      </div>
+    </div>
+
+    <div class="slide-out-content">
+        {{event-form event=model onsubmit=(action "createEvent")}}
+    </div>
+  </div>
+</div>

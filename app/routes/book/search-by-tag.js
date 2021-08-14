@@ -5,7 +5,6 @@ export default Route.extend({
     dataService: service('data'),
     model(params) {
         let tag = params[""];
-        let books = this.get("dataService").getBooksByTag(tag);
-        return books;
+        return this.get('store').query('book', { tags_like: tag });
     }
 });

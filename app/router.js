@@ -19,6 +19,16 @@ Router.map(function() {
     this.route('create');
     this.route('edit', { path: "/:id/edit" });
   });
+  this.route('report', { path: "/reports" }, function() {
+    this.route('detail', { path: "/:id" });
+    this.route('create', { path: "create/:book/:speaker/:event" });
+    this.route('edit', { path: "/:id/edit" });
+  });
+  this.route('event', { path: "/events" }, function() {
+    this.route('detail', { path: "/:id" });
+    this.route('create');
+    this.route('edit', { path: "/:id/edit" });
+  });
 });
 
 export default Router;

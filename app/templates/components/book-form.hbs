@@ -1,31 +1,30 @@
-<form onsubmit={{action "submitForm"}} class="details">
-        <div class="d-header">
-            <span>Книга</span>
-            <div class="d-items">
-                {{#link-to "book.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
-                <button class="btn btn-blue" type="submit">Сохранить</button>
-            </div>
-        </div>
-        <div class="d-desc">
-            <div class="d-desc-item">
-                bookName
-                {{input type="text" value=bookName}}
-            </div>
-            <div class="d-desc-item">
-                author
-                {{input type="text" value=author}}
-            </div>
-            <div class="d-desc-item">
-                pagesNumber
-                {{input type="text" value=pagesNumber}}
-            </div>
-            <div class="d-desc-item">
-                cover
-                {{input type="text" value=cover}}
-            </div>
-            <div class="d-desc-item">
-                tags
-                {{input type="text" value=tags}}
-            </div>
-        </div>
+<form onsubmit={{action "submitForm"}}>
+  <div class="field">
+    <label>Book Name</label>
+    {{input type="text" placeholder="Book Name" value=bookName}}
+  </div>
+
+  <div class="field">
+    <label>Author</label>
+    {{input type="text" placeholder="Author" value=author}}
+  </div>
+
+  <div class="field">
+    <label>Number of pages</label>
+    {{input type="text" placeholder="Number of pages" value=pagesNumber}}
+  </div>
+
+  <div class="field">
+    <label>Cover Link</label>
+    {{input type="text" placeholder="CoverLink" value=cover}}
+  </div>
+
+  <div class="field">
+    <label>Tags</label>
+    {{input type="text" placeholder="Tags" value=tags}}
+  </div>
+
+  <div class="form-footer">
+    <button type="submit" class="btn-submit">save</button>
+  </div>
 </form>

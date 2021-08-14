@@ -1,19 +1,25 @@
-<div class="details">
-        <div class="d-header">
-            <span>Поиск по тегу</span>
-            <div class="d-items">
-                  {{#link-to "book.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
+
+
+<div class="slide-out-bg"></div>
+
+<div class="slide-out">
+    <div class="slide-out-card">
+        {{#link-to "book.index" class="btn-back"}}
+        <span class="sr-only">Back</span>
+        {{/link-to}}
+
+        <div class="slide-out-heading">
+            <div class="title">
+                <h3>Search By Tag</h3>
             </div>
         </div>
-        <div class="d-desc">
-            {{#each model as |book|}}
-                <div class="d-desc-item">
-                    {{#link-to "book.detail" book.id}}
-                        {{book.id}}
-                        {{book.bookName}}
-                        {{book.author}}
-                    {{/link-to}}
-                </div>
-            {{/each}}
+
+        <div class="slide-out-content">
+            <ul class="collection">
+                {{#each model as |book|}}
+                    {{book-item bookId=book.id bookName=book.bookName bookAuthor=book.author tagName='li'}}
+                {{/each}}
+            </ul>
         </div>
+    </div>
 </div>

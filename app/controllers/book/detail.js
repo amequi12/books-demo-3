@@ -1,12 +1,10 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-    dataService: service('data'),
     actions: {
-        deleteBook(id) {
+        async deleteBook(book) {
             try {
-                this.get('dataService').deleteBook(id);
+                await book.destroyRecord();
                 this.transitionToRoute('book.index');
             }
             catch (e) {

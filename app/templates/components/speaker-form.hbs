@@ -1,23 +1,20 @@
-<form onsubmit={{action "submitForm"}} class="details">
-        <div class="d-header">
-            <span>Cпикер</span>
-            <div class="d-items">
-                {{#link-to "speaker.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
-                <button class="btn btn-blue" type="submit">Сохранить</button>
-            </div>
-        </div>
-        <div class="d-desc">
-            <div class="d-desc-item">
-                firstName
-                {{input type="text" value=firstName}}
-            </div>
-            <div class="d-desc-item">
-                middleName
-                {{input type="text" value=middleName}}
-            </div>
-            <div class="d-desc-item">
-                lastName
-                {{input type="text" value=lastName}}
-            </div>
-        </div>
+<form onsubmit={{action "submitForm"}}>
+  <div class="field">
+    <label>First Name</label>
+    {{input type="text" placeholder="First Name" value=firstName}}
+  </div>
+
+  <div class="field">
+    <label>Middle Name</label>
+    {{input type="text" placeholder="Middle Name" value=middleName}}
+  </div>
+
+  <div class="field">
+    <label>Last Name</label>
+    {{input type="text" placeholder="Last Name" value=lastName}}
+  </div>
+
+  <div class="form-footer">
+    <button type="submit" class="btn-submit">save</button>
+  </div>
 </form>

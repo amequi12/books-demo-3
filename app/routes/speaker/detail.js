@@ -1,10 +1,8 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
 
 export default Route.extend({
-    dataService: service('data'),
+    object: 0,
     model({id}) {
-        let speaker = this.get("dataService").getSpeaker(parseInt(id));
-        return speaker; 
+        return this.get('store').findRecord('speaker', id);
     }
 });

@@ -1,0 +1,25 @@
+<div class="panel-heading">
+  <div class="search">
+    {{input type="text" placeholder="Search by Report Date" value=search}}
+  </div>
+
+  {{#link-to "report.create" 0 0 0 class="btn-new"}}
+    <div class="sr-only">Add new Report</div>
+  {{/link-to}}
+</div>
+
+<div class="panel-content">
+  <h3 class="panel-title">Reports</h3>
+
+  {{#if isLoading}}
+  <h2>loading</h2>
+  {{else}}
+  <ul class="collection">
+    {{#each model as |report|}}
+          {{report-item tagName='li' reportId=report.id reportDate=report.reportDateView speaker=report.speaker book=report.book}}
+    {{/each}}   
+  </ul>
+  {{/if}}
+</div>
+
+{{outlet}}

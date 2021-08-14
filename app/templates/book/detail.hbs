@@ -1,43 +1,72 @@
-<div class="details">
-        <div class="d-header">
-            <span>Книга</span>
-            <div class="d-items">
-                  {{#link-to "book.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
-                  {{#link-to "book.edit" model.id class="btn btn-blue"}}<span>Редактировать</span>{{/link-to}}
-                  <button onclick={{action "deleteBook" model.id class="btn btn-blue"}}>удалить</button>
-            </div>
+<div class="slide-out-bg"></div>
+
+<div class="slide-out">
+  <div class="slide-out-card">
+    {{#link-to "book.index" class="btn-back"}}
+    <span class="sr-only">Back</span>
+    {{/link-to}}
+
+    <div class="slide-out-heading">
+      <div class="title">
+        <h3>{{model.bookName}}</h3>
+
+        <div class="actions">
+          {{#link-to "book.edit" model.id class="btn-pop"}}
+          edit
+          {{/link-to}}
+
+          <button class="btn-recessed" onclick={{action "deleteBook" model}}>delete</button>
         </div>
-        <div class="d-desc">
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.id}}</h2>
-            </div>
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.bookName}}</h2>
-            </div>
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.author}}</h2>
-            </div>
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.pagesNumber}}</h2>
-            </div>
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.cover}}</h2>
-            </div>
-            <div class="d-desc-item">
-                <span>Tags</span>
-                  {{#each model.tags as |tag|}}
-                        <li>
-                              {{#link-to "book.search-by-tag" tag}}
-                                    {{tag}}
-                              {{/link-to}}
-                        </li>
-                  {{/each}}
-            </div>
-        </div>
+      </div>
+    </div>
+
+    <div class="slide-out-content">
+      <div class="field">
+        <label>Book Name</label>
+        {{model.bookName}}
+      </div>
+
+      <div class="field">
+        <label>Author</label>
+        {{model.author}}
+      </div>
+
+      <div class="field">
+        <label>Number of pages</label>
+        {{model.pagesNumber}}
+      </div>
+
+      <div class="field">
+        <label>Cover Link</label>
+        {{model.cover}}
+      </div>
+
+      <div class="field">
+        <label>Tags</label>
+        <span>{{#each model.tags as |tag|}}
+          {{#link-to "book.search-by-tag" tag class="btn-pop"}}
+          {{tag}}
+          {{/link-to}}
+          {{/each}}
+        </span>
+      </div>
+      <div class="field">
+        {{#link-to "report.create" model.id 0 0 class="btn-secondary btn-add"}}
+          Add a report
+        {{/link-to}}
+      </div>
+      <div class="field">
+        <label>Reports on this book</label>
+        <ul class="collection">
+          {{#each model.reports as |report|}}
+          <li>
+            {{#link-to "report.detail" report.id}}
+            {{report.reportDate}}
+            {{/link-to}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
-{{outlet}}

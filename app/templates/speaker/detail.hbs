@@ -1,29 +1,57 @@
-<div class="details">
-        <div class="d-header">
-            <span>Спикер</span>
-            <div class="d-items">
-                  {{#link-to "speaker.index" class="btn btn-white"}}<span>Вернуться</span>{{/link-to}}
-                  {{#link-to "speaker.edit" model.id class="btn btn-blue"}}<span>Редактировать</span>{{/link-to}}
-                  <button onclick={{action "deleteSpeaker" model.id class="btn btn-blue"}}>удалить</button>
+<div class="slide-out-bg"></div>
+
+<div class="slide-out">
+    <div class="slide-out-card">
+        {{#link-to "speaker.index" class="btn-back"}}
+        <span class="sr-only">Back</span>
+        {{/link-to}}
+
+        <div class="slide-out-heading">
+            <div class="title">
+                <h3>{{model.lastName}} {{model.firstName}}</h3>
+
+                <div class="actions">
+                    {{#link-to "speaker.edit" model.id class="btn-pop"}}
+                    edit
+                    {{/link-to}}
+
+                    <button class="btn-recessed" onclick={{action "deleteSpeaker" model}}>delete</button>
+                </div>
             </div>
         </div>
-        <div class="d-desc">
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.id}}</h2>
+
+        <div class="slide-out-content">
+            <div class="field">
+                <label>First Name</label>
+                {{model.firstName}}
             </div>
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.firstName}}</h2>
+
+            <div class="field">
+                <label>Middle Name</label>
+                {{model.middleName}}
             </div>
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.middleName}}</h2>
+
+            <div class="field">
+                <label>Last Name</label>
+                {{model.lastName}}
             </div>
-            <div class="d-desc-item">
-                <span>Id</span>
-                <h2>{{model.lastName}}</h2>
+            <div class="field">
+                {{#link-to "report.create" 0 model.id 0 class="btn-secondary btn-add"}}
+                Add a report
+                {{/link-to}}
+            </div>
+            <div class="field">
+                <label>Reports from this speaker</label>
+                <ul class="collection">
+                    {{#each model.reports as |report|}}
+                    <li>
+                        {{#link-to "report.detail" report.id}}
+                        {{report.reportDate}}
+                        {{/link-to}}
+                    </li>
+                    {{/each}}
+                </ul>
             </div>
         </div>
+    </div>
 </div>
-{{outlet}}

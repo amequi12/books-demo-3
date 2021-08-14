@@ -1,17 +1,25 @@
-<div class="container">
-        <div class="menu">
-            <span>Книги</span>
-            {{input type="text" placeholder="Поиск по книгам" value=search class="search field"}}
-            {{#link-to "book.create" class="btn btn-blue"}}Добавить{{/link-to}}
-        </div>
+<div class="panel-heading">
+  <div class="search">
+    {{input type="text" placeholder="Search by Book Name" value=search}}
+  </div>
+
+  {{#link-to "book.create" class="btn-new"}}
+  <div class="sr-only">Add new Book</div>
+  {{/link-to}}
 </div>
- {{#if isLoading}}
-    <h2>loading</h2>
+
+<div class="panel-content">
+  <h3 class="panel-title">Books</h3>
+
+  {{#if isLoading}}
+  <h2>loading</h2>
   {{else}}
-  <div class="container">
-        {{#each model as |book|}}
-          {{book-item tagName='' bookId=book.id bookName=book.bookName bookAuthor=book.author}}
-        {{/each}}
-    </div>
-{{/if}}
+  <ul class="collection">
+    {{#each model as |book|}}
+    {{book-item bookId=book.id bookName=book.bookName bookAuthor=book.author tagName='li'}}
+    {{/each}}
+  </ul>
+  {{/if}}
+</div>
+
 {{outlet}}

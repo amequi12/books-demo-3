@@ -1,0 +1,65 @@
+<div class="slide-out-bg"></div>
+
+<div class="slide-out">
+    <div class="slide-out-card">
+        {{#link-to "report.index" class="btn-back"}}
+        <span class="sr-only">Back</span>
+        {{/link-to}}
+
+        <div class="slide-out-heading">
+            <div class="title">
+                <h3>Report</h3>
+
+                <div class="actions">
+                    {{#link-to "report.edit" model.id class="btn-pop"}}
+                    edit
+                    {{/link-to}}
+
+                    <button class="btn-recessed" onclick={{action "deleteReport" model}}>delete</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide-out-content">
+            <div class="field">
+                <label>Date</label>
+                {{model.reportDateView}}
+            </div>
+
+            <div class="field">
+                <label>Rating</label>
+                {{model.rating}}
+            </div>
+
+            <div class="field">
+                <label>Presentation</label>
+                {{model.presentationUrl}}
+            </div>
+
+            <div class="field">
+                <label>Video</label>
+                {{model.videoUrl}}
+            </div>
+
+            <div class="field">
+                <label>Review</label>
+                {{model.review}}
+            </div>
+
+            <div class="field">
+                <label>Book</label>
+                {{book-item bookId=model.book.id bookName=model.book.bookName bookAuthor=model.book.author tagName=''}}
+            </div>
+
+            <div class="field">
+                <label>Speaker</label>
+                {{speaker-item tagName='' speakerId=model.speaker.id firstName=model.speaker.firstName middleName=model.speaker.middleName lastName=model.speaker.lastName}}
+            </div>
+
+            <div class="field">
+                <label>Event</label>
+                {{event-item tagName='' eventId=model.event.id eventDate=model.speaker.eventDate}}
+            </div>
+        </div>
+    </div>
+</div>

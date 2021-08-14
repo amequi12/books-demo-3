@@ -1,1 +1,18 @@
-{{speaker-form speaker=model onsubmit=(action "createSpeaker")}}
+<div class="slide-out-bg"></div>
+<div class="slide-out">
+  <div class="slide-out-card">
+    {{#link-to "speaker" class="btn-back"}}
+      <span class="sr-only">Back</span>
+    {{/link-to}}
+
+    <div class="slide-out-heading">
+      <div class="title">
+        <h3>New Speaker</h3>
+      </div>
+    </div>
+
+    <div class="slide-out-content">
+        {{speaker-form speaker=model onsubmit=(action "createSpeaker")}}
+    </div>
+  </div>
+</div>

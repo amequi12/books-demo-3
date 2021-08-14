@@ -1,17 +1,25 @@
-<div class="container">
-        <div class="menu">
-            <span>Спикеры</span>
-              {{input type="text" placeholder="Поиск по спикерам" value=search class="search field"}}
-            {{#link-to "speaker.create" class="btn btn-blue"}}Добавить{{/link-to}}
-        </div>
+<div class="panel-heading">
+  <div class="search">
+    {{input type="text" placeholder="Search by Speaker Name" value=search}}
+  </div>
+
+  {{#link-to "speaker.create" class="btn-new"}}
+    <div class="sr-only">Add new Speaker</div>
+  {{/link-to}}
 </div>
- {{#if isLoading}}
-    <h2>loading</h2>
+
+<div class="panel-content">
+  <h3 class="panel-title">Speakers</h3>
+
+  {{#if isLoading}}
+  <h2>loading</h2>
   {{else}}
-  <div class="container">
-        {{#each model as |speaker|}}
-          {{speaker-item tagName='' speakerId=speaker.id firstName=speaker.firstName middleName=speaker.middleName lastName=speaker.lastName}}
-        {{/each}}      
-    </div>
-{{/if}}
+  <ul class="collection">
+    {{#each model as |speaker|}}
+          {{speaker-item tagName='li' speakerId=speaker.id firstName=speaker.firstName middleName=speaker.middleName lastName=speaker.lastName}}
+    {{/each}}   
+  </ul>
+  {{/if}}
+</div>
+
 {{outlet}}

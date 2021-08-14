@@ -1,0 +1,48 @@
+<div class="slide-out-bg"></div>
+
+<div class="slide-out">
+  <div class="slide-out-card">
+    {{#link-to "event.index" class="btn-back"}}
+    <span class="sr-only">Back</span>
+    {{/link-to}}
+
+    <div class="slide-out-heading">
+      <div class="title">
+        <h3>Event {{model.eventDate}}</h3>
+
+        <div class="actions">
+          {{#link-to "event.edit" model.id class="btn-pop"}}
+          edit
+          {{/link-to}}
+
+          <button class="btn-recessed" onclick={{action "deleteEvent" model}}>delete</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-out-content">
+      <div class="field">
+        <label>Event Date</label>
+        {{model.eventDate}}
+      </div>
+
+      <div class="field">
+        {{#link-to "report.create" model.id 0 class="btn-secondary btn-add"}}
+          Add a report
+        {{/link-to}}
+      </div>
+      <div class="field">
+        <label>Reports on this book</label>
+        <ul class="collection">
+          {{#each model.reports as |report|}}
+          <li>
+            {{#link-to "report.detail" report.id}}
+            {{report.reportDate}}
+            {{/link-to}}
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,12 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-    dataService: service('data'),
     actions: {
       async editSpeaker(speaker) {
         try {
-          await this.get("dataService").editSpeaker(speaker);  
+          let speakerModel = this.get('model');
+          speakerModel.setProperties(speaker);
+          await speakerModel.save();
           this.transitionToRoute('speaker.index');
         }
         catch (e) {

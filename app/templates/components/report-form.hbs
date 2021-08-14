@@ -1,0 +1,47 @@
+<form onsubmit={{action "submitForm"}}>
+
+  <div class="field">
+    <label>Rating</label>
+    {{input type="number" placeholder="Rating" value=rating}}
+  </div>
+
+  <div class="field">
+    <label>Presentation Link</label>
+    {{input type="text" placeholder="Presentation URL" value=presentationUrl}}
+  </div>
+
+  <div class="field">
+    <label>Video Link</label>
+    {{input type="text" placeholder="Video URL" value=videoUrl}}
+  </div>
+
+  <div class="field">
+    <label>Review</label>
+    {{input type="text" placeholder="Review" value=review}}
+  </div>
+
+  <div class="field">
+    <label>Speaker</label>
+    {{#power-select searchEnabled=true onchange=(action (mut speaker)) selected=speaker search=(action "searchSpeaker") as |speaker|}}
+        {{speaker.lastName}} {{speaker.firstName}}
+    {{/power-select}}
+  </div>
+
+    <div class="field">
+    <label>Book</label>
+    {{#power-select searchEnabled=true onchange=(action (mut book)) selected=book search=(action "searchBook") as |book|}}
+        {{book.bookName}} {{book.author}}
+    {{/power-select}}
+  </div>
+
+  <div class="field">
+    <label>Event</label>
+    {{#power-select searchEnabled=true onchange=(action (mut event)) selected=event search=(action "searchEvent") as |event|}}
+        {{event.eventDate}}
+    {{/power-select}}
+  </div>
+
+  <div class="form-footer">
+    <button type="submit" class="btn-submit">save</button>
+  </div>
+</form>

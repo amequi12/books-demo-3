@@ -1,0 +1,25 @@
+<div class="panel-heading">
+  <div class="search">
+    {{input type="text" placeholder="Search by Event Date" value=search}}
+  </div>
+
+  {{#link-to "event.create" class="btn-new"}}
+    <div class="sr-only">Add new Event</div>
+  {{/link-to}}
+</div>
+
+<div class="panel-content">
+  <h3 class="panel-title">Events</h3>
+
+  {{#if isLoading}}
+  <h2>loading</h2>
+  {{else}}
+  <ul class="collection">
+    {{#each model as |event|}}
+          {{event-item tagName='li' eventId=event.id eventDate=event.eventDate}}
+    {{/each}}   
+  </ul>
+  {{/if}}
+</div>
+
+{{outlet}}
