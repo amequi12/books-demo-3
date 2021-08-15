@@ -5,9 +5,9 @@ export default ApplicationSerializer.extend({
         return this._super(...arguments);
     },
     
-    serialize(snapshot) {
-        let json = this._super(...arguments);
-        json.type = snapshot.modelName;
-        return json;
-    }
+    // serialize(snapshot) {
+    //     let json = this._super(...arguments);
+    //     json.type = snapshot.modelName;
+    //     return json;
+    // }
 });

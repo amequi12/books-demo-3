@@ -12,9 +12,9 @@ export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin,{
         return this._super(...arguments);
     },
     
-    serialize(snapshot) {
-        let json = this._super(...arguments);
-        json.type = snapshot.modelName;
-        return json;
-    }
+    // serialize(snapshot) {
+    //     let json = this._super(...arguments);
+    //     json.type = snapshot.modelName;
+    //     return json;
+    // }
 });
