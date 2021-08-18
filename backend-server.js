@@ -13,7 +13,6 @@ const hashingSecret = "f844b09ff50c";
 
 const generateAccessToken = (userData) => {
   // expires after half and hour (1800 seconds = 30 minutes)
-  console.log('generateAccessToken');
   return jwt.sign(userData, secretKey, { expiresIn: '1800s' });
 }
 
@@ -71,7 +70,6 @@ const isAuthorized = (req) => {
 
   // проверка подлинности
   try {
-    console.log('isAuthorized set sessionUser');
     let user = jwt.verify(token, secretKey);
     req.app.set('sessionUser', user);
     return 200;
@@ -99,7 +97,6 @@ server.post('/token', function (req, res) {
 
   if (user) {
     const token = generateAccessToken({ email: user.email, username: user.username });
-    console.log('return token');
     res.json({ token });
   }
   else {
@@ -111,7 +108,6 @@ server.post('/token', function (req, res) {
 server.use((req, res, next) => {
   const authorizeCode = isAuthorized(req);
   if (authorizeCode === 200) {
-    console.log('authorized checked');
     next(); // continue to JSON Server router
   }
   else if (authorizeCode === 401) {
@@ -139,8 +135,7 @@ server.use((req, res, next) => {
 
       delete userCopy.password;
       delete userCopy.passwordConfirmation;
-      
-    console.log('send /me');
+
       res.json(userCopy);
     }
   }
@@ -167,7 +162,6 @@ server.use((req, res, next) => {
     delete userCopy.password;
     delete userCopy.passwordConfirmation;
     
-    console.log('what the actual fuck?');
     res.json(userCopy);
   }
   else {
