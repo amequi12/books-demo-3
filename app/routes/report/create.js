@@ -1,17 +1,22 @@
 import Route from '@ember/routing/route';
 import EmberObject from '@ember/object';
+import { inject as service } from '@ember/service';
 
 export default Route.extend({
-    model({ book, speaker, event }) {
-        return EmberObject.create({
-            reportDate: '',
+    currentUser: service(),
+    model({id}) {
+        let newReport =  EmberObject.create({
+            reportDate: '',//event.eventDate,
             rating: '',
             presentationUrl: '',
             videoUrl: '',
             review: '',
-            speaker: this.get('store').findRecord('speaker', speaker),
-            event: this.get('store').findRecord('event', event),
-            book: this.get('store').findRecord('book', book)
+            speaker: '',
+            event: this.get('store').findRecord('event', id),
+            book: '',
+            user: this.get('currentUser.user')
         });
+        newReport.reportDate = newReport.event.eventDate;
+        return newReport;
     }
 });

@@ -8,7 +8,8 @@ export default Component.extend({
             e.preventDefault();
             this.onsubmit({
                 id: this.get('eventId'),
-                eventDate: this.get('eventDate')
+                eventDate: this.get('eventDate'),
+                user: this.get('user')
             });
         },
 
@@ -25,7 +26,8 @@ export default Component.extend({
         this._super(...arguments);
         this.setProperties({
           eventId: this.get('event.id') ? this.get('event.id') : undefined,
-          eventDate: this.get('event.eventDate')
+          eventDate: this.get('event.eventDate'),
+          user: this.get('event.user')
         });
     }
 });

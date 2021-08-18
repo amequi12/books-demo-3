@@ -11,6 +11,7 @@ export default Component.extend({
                 pagesNumber: this.get('pagesNumber'),
                 cover: this.get('cover'),
                 tags: this.get('tags').toString().split(','),
+                user: this.get('user')
             });
         }
     },
@@ -23,7 +24,8 @@ export default Component.extend({
           author: this.get('book.author'),
           pagesNumber: this.get('book.pagesNumber'),
           cover: this.get('book.cover'),
-          tags: this.get('book.tags')
+          tags: this.get('book.tags'),
+          user: this.get('book.user')
         });
     }
 });

@@ -9,9 +9,11 @@
       "tags": [
         "мистика",
         "драма"
-      ]
+      ],
+      "userId": 1
     },
     {
+      "id": 2,
       "bookName": "Зима посеребрит виски",
       "author": "Питер Миллер",
       "pagesNumber": "s",
@@ -20,9 +22,10 @@
         "романтика",
         "драма"
       ],
-      "id": 2
+      "userId": 1
     },
     {
+      "id": 3,
       "bookName": "Моих артерий дни и перекрестки",
       "author": "Джуди Хейс",
       "pagesNumber": "a",
@@ -31,7 +34,7 @@
         "драма",
         "трагедия"
       ],
-      "id": 3
+      "userId": 1
     }
   ],
   "speakers": [
@@ -39,31 +42,36 @@
       "id": 1,
       "firstName": "София",
       "middleName": "Кирилловна",
-      "lastName": "Маркова"
+      "lastName": "Маркова",
+      "userId": 1
     },
     {
       "id": 2,
       "firstName": "Михаил",
       "middleName": "Максимович",
-      "lastName": "Тихонов"
+      "lastName": "Тихонов",
+      "userId": 1
     },
     {
       "id": 3,
       "firstName": "Диана",
       "middleName": "Ивановна",
-      "lastName": "Смирнова"
+      "lastName": "Смирнова",
+      "userId": 1
     },
     {
       "id": 4,
       "firstName": "Артём",
       "middleName": "Степанович",
-      "lastName": "Егоров"
+      "lastName": "Егоров",
+      "userId": 1
     },
     {
       "id": 5,
       "firstName": "Виктор",
       "middleName": "Павлович",
-      "lastName": "Кулаков"
+      "lastName": "Кулаков",
+      "userId": 1
     }
   ],
   "reports": [
@@ -76,9 +84,11 @@
       "review": "Находящаяся на грани психического заболевания, девушка видит кошмары, где она совершает страшные вещи. Как только она начинает понимать, что это всего лишь сновидения, её жизнь меняется.",
       "speakerId": 5,
       "eventId": 1,
-      "bookId": 1
+      "bookId": 1,
+      "userId": 1
     },
     {
+      "id": 2,
       "rating": 5,
       "presentationUrl": "url",
       "videoUrl": "url",
@@ -86,21 +96,11 @@
       "bookId": 3,
       "speakerId": 1,
       "eventId": 1,
-      "id": 2,
-      "reportDate": "2021-08-12T19:00:00.000Z"
+      "reportDate": "2021-08-12T19:00:00.000Z",
+      "userId": 1
     },
     {
-      "rating": 3,
-      "presentationUrl": "url",
-      "videoUrl": "url",
-      "review": "В центре сюжета — история молодого парня, который попадает в трудную жизненную ситуацию, но не может справиться с ней самостоятельно. Ему на помощь приходит девушка, владеющая удивительной силой.",
-      "bookId": 2,
-      "speakerId": 3,
-      "eventId": 2,
       "id": 3,
-      "reportDate": "2021-08-12T19:00:00.000Z"
-    },
-    {
       "rating": 4,
       "presentationUrl": "url",
       "videoUrl": "url",
@@ -108,40 +108,23 @@
       "bookId": 2,
       "speakerId": 4,
       "eventId": 1,
-      "id": 4,
-      "reportDate": "2021-08-12T19:00:00.000Z"
-    },
-    {
-      "rating": 5,
-      "presentationUrl": "url",
-      "videoUrl": "url",
-      "review": "Этот необычный парень в один миг лишается всех своих сбережений. Его единственный друг – это пёс Бонни.",
-      "bookId": 3,
-      "speakerId": 5,
-      "eventId": 2,
-      "id": 5,
-      "reportDate": "2021-05-15T19:00:00.000Z"
-    },
-    {
-      "rating": 5,
-      "presentationUrl": "url",
-      "videoUrl": "url",
-      "review": "Эта книга - трогательная история о дружбе и верности. Любовь к животным делает нас лучше, учит быть добрее и мягче!",
-      "bookId": 3,
-      "speakerId": 1,
-      "eventId": 1,
-      "id": 2,
+      "userId": 1,
       "reportDate": "2021-08-12T19:00:00.000Z"
     }
   ],
   "events": [
     {
       "id": 1,
-      "eventDate": "2020-12-29T19:00:00.000Z"
-    },
+      "eventDate": "2020-12-29T19:00:00.000Z",
+      "userId": 1
+    }
+  ],
+  "users": [
     {
-      "id": 2,
-      "eventDate": "2021-05-15T19:00:00.000Z"
+      "email": "user@email.com",
+      "username": "alex123",
+      "password": "6762a230543c8b125e59ca28c91a213344d142d4d99d73c9694367dc48cb4955",
+      "id": 1
     }
   ]
 }

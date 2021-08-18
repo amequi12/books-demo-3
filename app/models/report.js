@@ -14,4 +14,5 @@ export default DS.Model.extend({
     reportDateView: computed('event.eventDate', function(){
         return this.get('event.eventDate');
     }),
+    user: DS.belongsTo('user')
 });

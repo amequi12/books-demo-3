@@ -2,24 +2,42 @@
     <nav class="main-nav">
         <h1 class="logo">
             {{#link-to "index"}}
-            <span class="logo">Книжный клуб</span>
+            <span class="logo">Ember Library</span>
             {{/link-to}}
         </h1>
 
         <ul>
+            {{#if session.isAuthenticated}}
             <li>
-                {{#link-to "book"}}Книги{{/link-to}}
+                {{#link-to "book"}}Books{{/link-to}}
             </li>
             <li>
-                {{#link-to "speaker"}}Спикеры{{/link-to}}
+                {{#link-to "speaker"}}Speakers{{/link-to}}
             </li>
             <li>
-                {{#link-to "report"}}Доклады{{/link-to}}
+                {{#link-to "report"}}Reports{{/link-to}}
             </li>
             <li>
-                {{#link-to "event"}}Встречи{{/link-to}}
+                {{#link-to "event"}}Events{{/link-to}}
             </li>
+            <li>
+                <a href="#" onclick={{action "logout" }}>Logout</a>
+            </li>
+            {{else}}
+            <li>
+                {{#link-to "register"}}Register{{/link-to}}
+            </li>
+            <li>
+                {{#link-to "login"}}Login{{/link-to}}
+            </li>
+            {{/if}}
         </ul>
+
+        {{#if session.isAuthenticated}}
+        <div class="current-user">
+            Hello, <strong>{{currentUser.user.username}}</strong>
+        </div>
+        {{/if}}
     </nav>
 
     <main class="app-content">{{outlet}}</main>

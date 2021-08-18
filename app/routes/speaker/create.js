@@ -6,7 +6,8 @@ export default Route.extend({
         return EmberObject.create({
             firstName: '',
             middleName: '',
-            lastName: ''
+            lastName: '',
+            user: this.get('currentUser.user')
         });
     }
 });

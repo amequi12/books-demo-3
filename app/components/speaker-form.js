@@ -8,7 +8,8 @@ export default Component.extend({
                 id: this.get('speakerId'),
                 firstName: this.get('firstName'),
                 middleName: this.get('middleName'),
-                lastName: this.get('lastName')
+                lastName: this.get('lastName'),
+                user: this.get('user')
             });
         }
     },
@@ -19,7 +20,8 @@ export default Component.extend({
           speakerId: this.get('speaker.id') ? this.get('speaker.id') : undefined,
           firstName: this.get('speaker.firstName'),
           middleName: this.get('speaker.middleName'),
-          lastName: this.get('speaker.lastName')
+          lastName: this.get('speaker.lastName'),
+          user: this.get('speaker.user')
         });
     }
 });

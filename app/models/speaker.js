@@ -5,5 +5,6 @@ export default DS.Model.extend({
     middleName: DS.attr('string'),
     lastName: DS.attr('string'),
 
-    reports: DS.hasMany('report')
+    reports: DS.hasMany('report'),
+    user: DS.belongsTo('user')
 });

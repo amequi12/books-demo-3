@@ -4,7 +4,8 @@ import EmberObject from '@ember/object';
 export default Route.extend({
     model() {
         return EmberObject.create({
-            eventDate: ''
+            eventDate: '',
+            user: this.get('currentUser.user')
         });
     }
 });

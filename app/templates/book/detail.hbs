@@ -10,13 +10,13 @@
       <div class="title">
         <h3>{{model.bookName}}</h3>
 
-        <div class="actions">
-          {{#link-to "book.edit" model.id class="btn-pop"}}
-          edit
-          {{/link-to}}
+        {{#if (await (can "edit record" model))}}
+          <div class="actions">
+            {{#link-to "book.edit" model.id class="btn-pop"}}edit{{/link-to}}
 
-          <button class="btn-recessed" onclick={{action "deleteBook" model}}>delete</button>
-        </div>
+            <button class="btn-recessed" onclick={{action "deleteBook"}}>delete</button>
+          </div>
+        {{/if}}
       </div>
     </div>
 
@@ -49,11 +49,6 @@
           {{/link-to}}
           {{/each}}
         </span>
-      </div>
-      <div class="field">
-        {{#link-to "report.create" model.id 0 0 class="btn-secondary btn-add"}}
-          Add a report
-        {{/link-to}}
       </div>
       <div class="field">
         <label>Reports on this book</label>

@@ -16,7 +16,10 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
+    'ember-simple-auth-token': {
+      serverTokenEndpoint: 'http://localhost:3000/token',
+      refreshAccessTokens: false
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

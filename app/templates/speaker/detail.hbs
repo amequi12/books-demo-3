@@ -9,14 +9,14 @@
         <div class="slide-out-heading">
             <div class="title">
                 <h3>{{model.lastName}} {{model.firstName}}</h3>
-
-                <div class="actions">
-                    {{#link-to "speaker.edit" model.id class="btn-pop"}}
-                    edit
-                    {{/link-to}}
-
-                    <button class="btn-recessed" onclick={{action "deleteSpeaker" model}}>delete</button>
-                </div>
+                {{#if (await (can "edit record" model))}}
+                    <div class="actions">
+                        {{#link-to "speaker.edit" model.id class="btn-pop"}}
+                            edit
+                        {{/link-to}}
+                        <button class="btn-recessed" onclick={{action "deleteSpeaker" model}}>delete</button>
+                    </div>
+                {{/if}}
             </div>
         </div>
 
@@ -34,11 +34,6 @@
             <div class="field">
                 <label>Last Name</label>
                 {{model.lastName}}
-            </div>
-            <div class="field">
-                {{#link-to "report.create" 0 model.id 0 class="btn-secondary btn-add"}}
-                Add a report
-                {{/link-to}}
             </div>
             <div class="field">
                 <label>Reports from this speaker</label>
