@@ -1,10 +1,15 @@
-<form onsubmit={{action "submitForm"}}>
+<form onsubmit={{action "submitForm" }}>
   <div class="field">
-    <label>Event Date</label>
-    {{input type="date" placeholder="Event Date" value=eventDate}}
+    <label>{{t "event.attrs.eventDate"}}</label>
+    {{input type="date" placeholder=(t "event.attrs.eventDate") value=eventDate}}
+    {{#if (and errorView (v-get this 'eventDate' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'eventDate' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="form-footer">
-    <button type="submit" class="btn-submit">save</button>
+    <button type="submit" class="btn-submit">{{t "save"}}</button>
   </div>
 </form>

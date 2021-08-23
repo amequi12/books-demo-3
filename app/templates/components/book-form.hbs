@@ -1,30 +1,55 @@
-<form onsubmit={{action "submitForm"}}>
+<form onsubmit={{action "submitForm" }}>
   <div class="field">
-    <label>Book Name</label>
-    {{input type="text" placeholder="Book Name" value=bookName}}
+    <label>{{t "book.attrs.bookName"}}</label>
+    {{input type="text" placeholder=(t "book.attrs.bookName") value=bookName}}
+    {{#if (and errorView (v-get this 'bookName' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'bookName' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Author</label>
-    {{input type="text" placeholder="Author" value=author}}
+    <label>{{t "book.attrs.author"}}</label>
+    {{input type="text" placeholder=(t "book.attrs.author") value=author}}
+    {{#if (and errorView (v-get this 'author' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'author' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Number of pages</label>
-    {{input type="text" placeholder="Number of pages" value=pagesNumber}}
+    <label>{{t "book.attrs.pagesNumber"}}</label>
+    {{input type="text" placeholder=(t "book.attrs.pagesNumber") value=pagesNumber}}
+    {{#if (and errorView (v-get this 'pagesNumber' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'pagesNumber' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Cover Link</label>
-    {{input type="text" placeholder="CoverLink" value=cover}}
+    <label>{{t "book.attrs.cover"}}</label>
+    {{input type="text" placeholder=(t "book.attrs.cover") value=cover}}
+    {{#if (and errorView (v-get this 'cover' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'cover' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Tags</label>
-    {{input type="text" placeholder="Tags" value=tags}}
+    <label>{{t "book.attrs.tags"}}</label>
+    {{input type="text" placeholder=(t "book.attrs.tags") value=tags}}
+    {{#if (and errorView (v-get this 'tags' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'tags' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="form-footer">
-    <button type="submit" class="btn-submit">save</button>
+    <button type="submit" class="btn-submit">{{t "save"}}</button>
   </div>
 </form>

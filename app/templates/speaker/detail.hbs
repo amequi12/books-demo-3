@@ -3,7 +3,7 @@
 <div class="slide-out">
     <div class="slide-out-card">
         {{#link-to "speaker.index" class="btn-back"}}
-        <span class="sr-only">Back</span>
+        <span class="sr-only">{{t "back"}}</span>
         {{/link-to}}
 
         <div class="slide-out-heading">
@@ -12,9 +12,9 @@
                 {{#if (await (can "edit record" model))}}
                     <div class="actions">
                         {{#link-to "speaker.edit" model.id class="btn-pop"}}
-                            edit
+                            {{t "speaker.edit"}}
                         {{/link-to}}
-                        <button class="btn-recessed" onclick={{action "deleteSpeaker" model}}>delete</button>
+                        <button class="btn-recessed" onclick={{action "deleteSpeaker" model}}>{{t "delete"}}</button>
                     </div>
                 {{/if}}
             </div>
@@ -22,21 +22,21 @@
 
         <div class="slide-out-content">
             <div class="field">
-                <label>First Name</label>
+                <label>{{t "speaker.attrs.firstName"}}</label>
                 {{model.firstName}}
             </div>
 
             <div class="field">
-                <label>Middle Name</label>
+                <label>{{t "speaker.attrs.middleName"}}</label>
                 {{model.middleName}}
             </div>
 
             <div class="field">
-                <label>Last Name</label>
+                <label>{{t "speaker.attrs.lastName"}}</label>
                 {{model.lastName}}
             </div>
             <div class="field">
-                <label>Reports from this speaker</label>
+                <label>{{t "speaker.attrs.reports"}}</label>
                 <ul class="collection">
                     {{#each model.reports as |report|}}
                     <li>

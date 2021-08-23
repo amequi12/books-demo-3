@@ -3,16 +3,26 @@
     <div class="error-alert">{{error.detail}}</div>
   {{/each}}
   <div class="field">
-    <label>Email:</label>
-    {{input type="text" placeholder="Email" value=email}}
+    <label>{{t "email"}}</label>
+    {{input type="text" placeholder=(t "email") value=email}}
+    {{#if (and errorView (v-get this 'email' 'isInvalid'))}}
+      <span class="error-message">
+        {{v-get this 'email' 'message'}}
+      </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Password:</label>
-    {{input type="password" placeholder="Password" value=password}}
+    <label>{{t "password"}}</label>
+    {{input type="password" placeholder=(t "password") value=password}}
+    {{#if (and errorView (v-get this 'password' 'isInvalid'))}}
+      <span class="error-message">
+        {{v-get this 'password' 'message'}}
+      </span>
+    {{/if}}
   </div>
 
   <div class="form-footer">
-    <button type="submit" class="btn-submit">login</button>
+    <button type="submit" class="btn-submit">{{t "login"}}</button>
   </div>
 </form>

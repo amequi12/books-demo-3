@@ -1,47 +1,76 @@
-<form onsubmit={{action "submitForm"}}>
+<form onsubmit={{action "submitForm" }}>
 
   <div class="field">
-    <label>Rating</label>
-    {{input type="number" placeholder="Rating" value=rating}}
+    <label>{{t "report.attrs.rating"}}</label>
+    {{input type="number" placeholder=(t "report.attrs.rating") value=rating}}
+    {{#if (and errorView (v-get this 'rating' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'rating' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Presentation Link</label>
-    {{input type="text" placeholder="Presentation URL" value=presentationUrl}}
+    <label>{{t "report.attrs.presentationUrl"}}</label>
+    {{input type="text" placeholder=(t "report.attrs.presentationUrl") value=presentationUrl}}
+
   </div>
 
   <div class="field">
-    <label>Video Link</label>
-    {{input type="text" placeholder="Video URL" value=videoUrl}}
+    <label>{{t "report.attrs.videoUrl"}}</label>
+    {{input type="text" placeholder=(t "report.attrs.videoUrl") value=videoUrl}}
   </div>
 
   <div class="field">
-    <label>Review</label>
-    {{input type="text" placeholder="Review" value=review}}
+    <label>{{t "report.attrs.review"}}</label>
+    {{input type="text" placeholder=(t "report.attrs.review") value=review}}
+    {{#if (and errorView (v-get this 'review' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'review' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Speaker</label>
-    {{#power-select searchEnabled=true onchange=(action (mut speaker)) selected=speaker search=(action "searchSpeaker") as |speaker|}}
-        {{speaker.lastName}} {{speaker.firstName}}
+    <label>{{t "report.attrs.speaker"}}</label>
+    {{#power-select searchEnabled=true onchange=(action (mut speaker)) selected=speaker search=(action "searchSpeaker")
+    as |speaker|}}
+    {{speaker.lastName}} {{speaker.firstName}}
     {{/power-select}}
-  </div>
-
-    <div class="field">
-    <label>Book</label>
-    {{#power-select searchEnabled=true onchange=(action (mut book)) selected=book search=(action "searchBook") as |book|}}
-        {{book.bookName}} {{book.author}}
-    {{/power-select}}
+    {{#if (and errorView (v-get this 'speaker' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'speaker' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Event</label>
-    {{#power-select searchEnabled=true onchange=(action (mut event)) selected=event search=(action "searchEvent") as |event|}}
-        {{event.eventDate}}
+    <label>{{t "report.attrs.book"}}</label>
+    {{#power-select searchEnabled=true onchange=(action (mut book)) selected=book search=(action "searchBook") as
+    |book|}}
+    {{book.bookName}} {{book.author}}
     {{/power-select}}
+    {{#if (and errorView (v-get this 'book' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'book' 'message'}}
+    </span>
+    {{/if}}
+  </div>
+
+  <div class="field">
+    <label>{{t "report.attrs.event"}}</label>
+    {{#power-select searchEnabled=true onchange=(action (mut event)) selected=event search=(action "searchEvent") as
+    |event|}}
+    {{event.eventDate}}
+    {{/power-select}}
+    {{#if (and errorView (v-get this 'event' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'event' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="form-footer">
-    <button type="submit" class="btn-submit">save</button>
+    <button type="submit" class="btn-submit">{{t "save"}}</button>
   </div>
 </form>

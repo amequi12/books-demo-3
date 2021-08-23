@@ -1,18 +1,18 @@
 <div class="panel-heading">
   <div class="search">
-    {{input type="text" placeholder="Search by Speaker Name" value=search}}
+    {{input type="text" placeholder=(t "speaker.search") value=search}}
   </div>
 
   {{#link-to "speaker.create" class="btn-new"}}
-    <div class="sr-only">Add new Speaker</div>
+    <div class="sr-only">{{t "speaker.action"}}</div>
   {{/link-to}}
 </div>
 
 <div class="panel-content">
-  <h3 class="panel-title">Speakers</h3>
+  <h3 class="panel-title">{{t "speaker.title"}}</h3>
 
   {{#if isLoading}}
-  <h2>loading</h2>
+  <h2>{{t "loading"}}</h2>
   {{else}}
   <ul class="collection">
     {{#each model as |speaker|}}

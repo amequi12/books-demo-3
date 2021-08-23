@@ -1,14 +1,14 @@
 <div class="panel-heading">
   <div class="search">
-    {{input type="text" placeholder="Search by Report Date" value=search}}
+    {{input type="text" placeholder=(t "report.search") value=search}}
   </div>
 </div>
 
 <div class="panel-content">
-  <h3 class="panel-title">Reports</h3>
+  <h3 class="panel-title">{{t "report.title"}}</h3>
 
   {{#if isLoading}}
-  <h2>loading</h2>
+  <h2>{{t "loading"}}</h2>
   {{else}}
   <ul class="collection">
     {{#each model as |report|}}

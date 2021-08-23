@@ -1,18 +1,18 @@
 <div class="panel-heading">
   <div class="search">
-    {{input type="text" placeholder="Search by Event Date" value=search}}
+    {{input type="text" placeholder=(t "event.search") value=search}}
   </div>
 
   {{#link-to "event.create" class="btn-new"}}
-    <div class="sr-only">Add new Event</div>
+    <div class="sr-only">{{t "event.action"}}</div>
   {{/link-to}}
 </div>
 
 <div class="panel-content">
-  <h3 class="panel-title">Events</h3>
+  <h3 class="panel-title">{{t "event.title"}}</h3>
 
   {{#if isLoading}}
-  <h2>loading</h2>
+  <h2>{{t "loading"}}</h2>
   {{else}}
   <ul class="collection">
     {{#each model as |event|}}

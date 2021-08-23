@@ -3,7 +3,7 @@
 <div class="slide-out">
   <div class="slide-out-card">
     {{#link-to "book.index" class="btn-back"}}
-    <span class="sr-only">Back</span>
+    <span class="sr-only">{{t "back"}}</span>
     {{/link-to}}
 
     <div class="slide-out-heading">
@@ -12,9 +12,9 @@
 
         {{#if (await (can "edit record" model))}}
           <div class="actions">
-            {{#link-to "book.edit" model.id class="btn-pop"}}edit{{/link-to}}
+            {{#link-to "book.edit" model.id class="btn-pop"}}{{t "edit"}}{{/link-to}}
 
-            <button class="btn-recessed" onclick={{action "deleteBook"}}>delete</button>
+            <button class="btn-recessed" onclick={{action "deleteBook" model}}>{{t "delete"}}</button>
           </div>
         {{/if}}
       </div>
@@ -22,27 +22,27 @@
 
     <div class="slide-out-content">
       <div class="field">
-        <label>Book Name</label>
+        <label>{{t "book.attrs.bookName"}}</label>
         {{model.bookName}}
       </div>
 
       <div class="field">
-        <label>Author</label>
+        <label>{{t "book.attrs.author"}}</label>
         {{model.author}}
       </div>
 
       <div class="field">
-        <label>Number of pages</label>
+        <label>{{t "book.attrs.pagesNumber"}}</label>
         {{model.pagesNumber}}
       </div>
 
       <div class="field">
-        <label>Cover Link</label>
+        <label>{{t "book.attrs.cover"}}</label>
         {{model.cover}}
       </div>
 
       <div class="field">
-        <label>Tags</label>
+        <label>{{t "book.attrs.tags"}}</label>
         <span>{{#each model.tags as |tag|}}
           {{#link-to "book.search-by-tag" tag class="btn-pop"}}
           {{tag}}
@@ -51,7 +51,7 @@
         </span>
       </div>
       <div class="field">
-        <label>Reports on this book</label>
+        <label>{{t "book.reports"}}</label>
         <ul class="collection">
           {{#each model.reports as |report|}}
           <li>

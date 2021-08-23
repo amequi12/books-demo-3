@@ -3,19 +3,19 @@
 <div class="slide-out">
   <div class="slide-out-card">
     {{#link-to "event.index" class="btn-back"}}
-    <span class="sr-only">Back</span>
+    <span class="sr-only">{{t "back"}}</span>
     {{/link-to}}
 
     <div class="slide-out-heading">
       <div class="title">
-        <h3>Event on {{model.eventDate}}</h3>
+        <h3>{{t "event.detail"}} {{model.eventDate}}</h3>
         {{#if (await (can "edit record" model))}}
           <div class="actions">
             {{#link-to "event.edit" model.id class="btn-pop"}}
-              edit
+              {{t "edit"}}
             {{/link-to}}
 
-            <button class="btn-recessed" onclick={{action "deleteEvent" model}}>delete</button>
+            <button class="btn-recessed" onclick={{action "deleteEvent" model}}>{{t "delete"}}</button>
           </div>
         {{/if}}
       </div>
@@ -23,17 +23,17 @@
 
     <div class="slide-out-content">
       <div class="field">
-        <label>Event Date</label>
+        <label>{{t "event.attrs.eventDate"}}</label>
         {{model.eventDate}}
       </div>
 
       <div class="field">
         {{#link-to "report.create" model.id class="btn-secondary btn-add"}}
-        Add a report
+        {{t "event.reportsAdd"}}
         {{/link-to}}
       </div>
       <div class="field">
-        <label>Reports from this event</label>
+        <label>{{t "event.reports"}}</label>
         <ul class="collection">
           {{#each model.reports as |report|}}
           <li>

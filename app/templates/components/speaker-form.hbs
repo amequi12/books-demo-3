@@ -1,20 +1,35 @@
-<form onsubmit={{action "submitForm"}}>
+<form onsubmit={{action "submitForm" }}>
   <div class="field">
-    <label>First Name</label>
-    {{input type="text" placeholder="First Name" value=firstName}}
+    <label>{{t "speaker.attrs.firstName"}}</label>
+    {{input type="text" placeholder=(t "speaker.attrs.firstName") value=firstName}}
+    {{#if (and errorView (v-get this 'firstName' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'firstName' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Middle Name</label>
-    {{input type="text" placeholder="Middle Name" value=middleName}}
+    <label>{{t "speaker.attrs.middleName"}}</label>
+    {{input type="text" placeholder=(t "speaker.attrs.middleName") value=middleName}}
+    {{#if (and errorView (v-get this 'middleName' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'middleName' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="field">
-    <label>Last Name</label>
-    {{input type="text" placeholder="Last Name" value=lastName}}
+    <label>{{t "speaker.attrs.lastName"}}</label>
+    {{input type="text" placeholder=(t "speaker.attrs.lastName") value=lastName}}
+    {{#if (and errorView (v-get this 'lastName' 'isInvalid'))}}
+    <span class="error-message">
+      {{v-get this 'lastName' 'message'}}
+    </span>
+    {{/if}}
   </div>
 
   <div class="form-footer">
-    <button type="submit" class="btn-submit">save</button>
+    <button type="submit" class="btn-submit">{{t "save"}}</button>
   </div>
 </form>

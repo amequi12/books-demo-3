@@ -1,24 +1,112 @@
 import Component from '@ember/component';
+import { get, computed } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { validator, buildValidations } from 'ember-cp-validations';
 
-export default Component.extend({
+const Validations = buildValidations({
+    rating: [
+        validator('ds-error'),
+        validator('presence', {
+            presence: true,
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            }),
+        }),
+        validator('number', {
+            allowString: true,
+            integer: true,
+            gt: 0,
+            lte: 5,
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.wrongRating');
+            })
+        })
+    ],
+    presentationUrl: [
+        validator('ds-error')
+    ],
+    videoUrl: [
+        validator('ds-error')
+    ],
+    review: [
+        validator('ds-error'),
+        validator('presence', {
+            presence: true,
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            }),
+        })
+    ],
+    book: [
+        validator('ds-error'),
+        validator('belongs-to', {
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            })
+        }),
+        validator('presence', {
+            presence: true,
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            }),
+        })
+    ],
+    speaker: [
+        validator('ds-error'),
+        validator('belongs-to', {
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            })
+        }),
+        validator('presence', {
+            presence: true,
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            }),
+        })
+    ],
+    event: [
+        validator('ds-error'),
+        validator('belongs-to', {
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            })
+        }),
+        validator('presence', {
+            presence: true,
+            message: computed('model.{i18n.locale}', function () {
+                return '{description} ' + get(this, 'model.i18n').t('errors.blank');
+            }),
+        })
+    ]
+});
+
+export default Component.extend(Validations, {
+    i18n: service(),
+    isFormValid: computed.alias('validations.isValid'),
+    errorView: false,
     reportDate: null,
     store: service(),
     actions: {
         submitForm(e){
             e.preventDefault();
-            this.onsubmit({
-                id: this.get('reportId'),
-                reportDate: this.get('reportDate'),
-                rating: this.get('rating'),
-                presentationUrl: this.get('presentationUrl'),
-                videoUrl: this.get('videoUrl'),
-                review: this.get('review'),
-                speaker: this.get('speaker'),
-                book: this.get('book'),
-                event: this.get('event'),
-                user: this.get('user')
-            });
+            if (this.get('isFormValid')) {
+                this.onsubmit({
+                    id: this.get('reportId'),
+                    reportDate: this.get('reportDate'),
+                    rating: this.get('rating'),
+                    presentationUrl: this.get('presentationUrl'),
+                    videoUrl: this.get('videoUrl'),
+                    review: this.get('review'),
+                    speaker: this.get('speaker'),
+                    book: this.get('book'),
+                    event: this.get('event'),
+                    user: this.get('user')
+                });
+            }
+            else {
+                this.set('errorView', true);
+            }
         },
 
         searchSpeaker(query) {

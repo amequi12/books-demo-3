@@ -3,18 +3,18 @@
 <div class="slide-out">
     <div class="slide-out-card">
         {{#link-to "report.index" class="btn-back"}}
-        <span class="sr-only">Back</span>
+        <span class="sr-only">{{t "back"}}</span>
         {{/link-to}}
 
         <div class="slide-out-heading">
             <div class="title">
-                <h3>Report</h3>
+                <h3>{{t "report.detail"}}</h3>
                 {{#if (await (can "edit record" model))}}
                     <div class="actions">
                         {{#link-to "report.edit" model.id class="btn-pop"}}
-                            edit
+                            {{t "report.edit"}}
                         {{/link-to}}
-                        <button class="btn-recessed" onclick={{action "deleteReport" model}}>delete</button>
+                        <button class="btn-recessed" onclick={{action "deleteReport" model}}>{{t "delete"}}</button>
                     </div>
                 {{/if}}
             </div>
@@ -22,43 +22,43 @@
 
         <div class="slide-out-content">
             <div class="field">
-                <label>Date</label>
+                <label>{{t "report.attrs.reportDate"}}</label>
                 {{model.reportDateView}}
             </div>
 
             <div class="field">
-                <label>Rating</label>
+                <label>{{t "report.attrs.rating"}}</label>
                 {{model.rating}}
             </div>
 
             <div class="field">
-                <label>Presentation</label>
+                <label>{{t "report.attrs.presentationUrl"}}</label>
                 {{model.presentationUrl}}
             </div>
 
             <div class="field">
-                <label>Video</label>
+                <label>{{t "report.attrs.videoUrl"}}</label>
                 {{model.videoUrl}}
             </div>
 
             <div class="field">
-                <label>Review</label>
+                <label>{{t "report.attrs.review"}}</label>
                 {{model.review}}
             </div>
 
             <div class="field">
-                <label>Book</label>
+                <label>{{t "report.attrs.book"}}</label>
                 {{book-item bookId=model.book.id bookName=model.book.bookName bookAuthor=model.book.author tagName=''}}
             </div>
 
             <div class="field">
-                <label>Speaker</label>
+                <label>{{t "report.attrs.speaker"}}</label>
                 {{speaker-item tagName='' speakerId=model.speaker.id firstName=model.speaker.firstName
                 middleName=model.speaker.middleName lastName=model.speaker.lastName}}
             </div>
 
             <div class="field">
-                <label>Event</label>
+                <label>{{t "report.attrs.event"}}</label>
                 {{event-item tagName='' eventId=model.event.id eventDate=model.event.eventDate}}
             </div>
         </div>
