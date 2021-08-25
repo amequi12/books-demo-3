@@ -1,6 +1,6 @@
 <div class="panel-heading">
   <div class="search">
-    {{input type="text" placeholder=(t "book.search") value=search}}
+    {{input type="text" placeholder=(t "book.search") input=(action "searchInputChange") value=searchLater}}
   </div>
 
   {{#link-to "book.create" class="btn-new"}}

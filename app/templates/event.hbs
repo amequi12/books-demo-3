@@ -1,6 +1,6 @@
 <div class="panel-heading">
   <div class="search">
-    {{input type="text" placeholder=(t "event.search") value=search}}
+    {{input type="text" placeholder=(t "event.search") input=(action "searchInputChange") value=searchLater}}
   </div>
 
   {{#link-to "event.create" class="btn-new"}}

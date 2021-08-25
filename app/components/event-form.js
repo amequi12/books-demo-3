@@ -16,12 +16,16 @@ const Validations = buildValidations({
 });
 
 export default Component.extend(Validations, {
+    router: service(),
+    currentURL: computed('router.currentURL', function () {
+        return this.router.currentURL;
+    }),
     store: service(),
     i18n: service(),
     isFormValid: computed.alias('validations.isValid'),
     errorView: false,
     actions: {
-        submitForm(e){
+        submitForm(e) {
             e.preventDefault();
             if (this.get('isFormValid')) {
                 this.onsubmit({
@@ -31,12 +35,13 @@ export default Component.extend(Validations, {
                 });
             }
             else {
+                get(this, 'errorLogger').log('Form is invalid', get(this, 'currentURL'));
                 this.set('errorView', true);
             }
         },
 
         searchSpeaker(query) {
-          return this.get('store').query('speaker', { q: query })
+            return this.get('store').query('speaker', { q: query })
         },
 
         searchBook(query) {
@@ -47,9 +52,9 @@ export default Component.extend(Validations, {
     didReceiveAttrs() {
         this._super(...arguments);
         this.setProperties({
-          eventId: this.get('event.id') ? this.get('event.id') : undefined,
-          eventDate: this.get('event.eventDate'),
-          user: this.get('event.user')
+            eventId: this.get('event.id') ? this.get('event.id') : undefined,
+            eventDate: this.get('event.eventDate'),
+            user: this.get('event.user')
         });
     }
 });

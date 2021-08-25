@@ -12,11 +12,12 @@ const Validations = buildValidations({
         return '{description} ' + get(this, 'model.i18n').t('errors.blank');
       }),
     }),
-    validator('format', { type: 'email',
-    message: computed('model.{i18n.locale}', function () {
-      return '{description} ' + get(this, 'model.i18n').t('errors.email');
-    }) 
-  })
+    validator('format', {
+      type: 'email',
+      message: computed('model.{i18n.locale}', function () {
+        return '{description} ' + get(this, 'model.i18n').t('errors.email');
+      })
+    })
   ],
   password: [
     validator('ds-error'),
@@ -30,6 +31,10 @@ const Validations = buildValidations({
 });
 
 export default Component.extend(Validations, {
+  router: service(),
+  currentURL: computed('router.currentURL', function () {
+    return this.router.currentURL;
+  }),
   i18n: service(),
   isInvalid: false,
   errorView: false,
@@ -44,6 +49,7 @@ export default Component.extend(Validations, {
         });
       }
       else {
+        get(this, 'errorLogger').log('Form is invalid', get(this, 'currentURL'));
         this.set('errorView', true);
       }
     }

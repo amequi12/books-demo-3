@@ -6,7 +6,7 @@ export default Route.extend({
     currentUser: service(),
     model({id}) {
         let newReport =  EmberObject.create({
-            reportDate: '',//event.eventDate,
+            reportDate: '',
             rating: '',
             presentationUrl: '',
             videoUrl: '',

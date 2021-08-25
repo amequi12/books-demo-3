@@ -82,13 +82,17 @@ const Validations = buildValidations({
 });
 
 export default Component.extend(Validations, {
+    router: service(),
+    currentURL: computed('router.currentURL', function () {
+        return this.router.currentURL;
+    }),
     i18n: service(),
     isFormValid: computed.alias('validations.isValid'),
     errorView: false,
     reportDate: null,
     store: service(),
     actions: {
-        submitForm(e){
+        submitForm(e) {
             e.preventDefault();
             if (this.get('isFormValid')) {
                 this.onsubmit({
@@ -105,12 +109,13 @@ export default Component.extend(Validations, {
                 });
             }
             else {
+                get(this, 'errorLogger').log('Form is invalid', get(this, 'currentURL'));
                 this.set('errorView', true);
             }
         },
 
         searchSpeaker(query) {
-          return this.get('store').query('speaker', { q: query })
+            return this.get('store').query('speaker', { q: query })
         },
 
         searchBook(query) {
@@ -125,16 +130,16 @@ export default Component.extend(Validations, {
     didReceiveAttrs() {
         this._super(...arguments);
         this.setProperties({
-          reportId: this.get('report.id') ? this.get('report.id') : undefined,
-          reportDate: this.get('report.event.eventDate'),
-          rating: this.get('report.rating'),
-          presentationUrl: this.get('report.presentationUrl'),
-          videoUrl: this.get('report.videoUrl'),
-          review: this.get('report.review'),
-          speaker: this.get('report.speaker'),
-          book: this.get('report.book'),
-          event: this.get('report.event'),
-          user: this.get('report.user')
+            reportId: this.get('report.id') ? this.get('report.id') : undefined,
+            reportDate: this.get('report.event.eventDate'),
+            rating: this.get('report.rating'),
+            presentationUrl: this.get('report.presentationUrl'),
+            videoUrl: this.get('report.videoUrl'),
+            review: this.get('report.review'),
+            speaker: this.get('report.speaker'),
+            book: this.get('report.book'),
+            event: this.get('report.event'),
+            user: this.get('report.user')
         });
     }
 });

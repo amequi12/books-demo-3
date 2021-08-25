@@ -1,8 +1,12 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+import { get, computed } from '@ember/object';
 
 export default Controller.extend({
-  dataService: service('data'),
+  router: service(),
+  currentURL: computed('router.currentURL', function () {
+    return this.router.currentURL;
+  }),
   actions: {
     async editBook(book) {
       try {
@@ -12,6 +16,8 @@ export default Controller.extend({
         this.transitionToRoute('book.index');
       }
       catch (e) {
+        get(this, 'errorLogger').log(e.message, get(this, 'currentURL'));
+
         this.send('error', new Error('Connection failed'));
       }
     }

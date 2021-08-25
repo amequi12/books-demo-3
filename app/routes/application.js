@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import { get } from '@ember/object';
 
 export default Route.extend(ApplicationRouteMixin, {
   session: service(),
@@ -25,7 +26,12 @@ export default Route.extend(ApplicationRouteMixin, {
 
   loadUser() {
     if (this.get('session.isAuthenticated')) {
-      this.get('currentUser').load();
+      try {
+        this.get('currentUser').load();
+      }
+      catch (e) {
+        get(this, 'errorLogger').log(e.message, get(this, 'currentURL'));
+      }
     }
   },
 
@@ -34,7 +40,7 @@ export default Route.extend(ApplicationRouteMixin, {
       if (transition) {
         transition.abort();
       }
-      this.intermediateTransitionTo('error', { error: error.message});
+      this.intermediateTransitionTo('error', { error: error.message });
       return true;
     }
   }

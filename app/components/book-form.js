@@ -60,6 +60,10 @@ const Validations = buildValidations({
 });
 
 export default Component.extend(Validations, {
+    router: service(),
+    currentURL: computed('router.currentURL', function () {
+        return this.router.currentURL;
+    }),
     i18n: service(),
     isFormValid: computed.alias('validations.isValid'),
     errorView: false,
@@ -78,6 +82,7 @@ export default Component.extend(Validations, {
                 });
             }
             else {
+                get(this, 'errorLogger').log('Form is invalid', get(this, 'currentURL'));
                 this.set('errorView', true);
             }
         }

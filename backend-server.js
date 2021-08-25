@@ -55,7 +55,7 @@ const getBaseRoute = (req) => {
 const isAuthorized = (req) => {
   const baseRoute = getBaseRoute(req);
   //исключения
-  if (req.path === '/users' || req.path === '/token' || ((baseRoute === 'events' || baseRoute === 'books' || baseRoute === 'speakers' || baseRoute === 'reports') && req.method === 'GET')) {
+  if (req.path === '/errors' || req.path === '/users' || req.path === '/token' || ((baseRoute === 'events' || baseRoute === 'books' || baseRoute === 'speakers' || baseRoute === 'reports') && req.method === 'GET')) {
     return 200;
   }
 
@@ -85,6 +85,11 @@ server.use(middlewares)
 // To handle POST, PUT and PATCH you need to use a body-parser
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser);
+
+server.use('/errors', function (req, res, next) {
+  req.body.errorIp = req.ip;
+  next();
+})
 
 // логинимся
 server.post('/token', function (req, res) {
@@ -161,7 +166,7 @@ server.use((req, res, next) => {
 
     delete userCopy.password;
     delete userCopy.passwordConfirmation;
-    
+
     res.json(userCopy);
   }
   else {
@@ -185,7 +190,7 @@ server.use((req, res, next) => {
     res.status(422).json(getError('Email', 'user with this email already exists', 422, '/data/attributes/email'));
   }
   else if (getBaseRoute(req) === 'users' && req.method === 'POST') {
-    if(req.body.password === req.body.passwordConfirmation) {
+    if (req.body.password === req.body.passwordConfirmation) {
       const hashedPassword = crypto.createHmac('sha256', hashingSecret).update(req.body.password).digest('hex');
       req.body.password = hashedPassword;
       delete req.body.passwordConfirmation;

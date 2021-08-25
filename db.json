@@ -88,5 +88,21 @@
       "password": "6762a230543c8b125e59ca28c91a213344d142d4d99d73c9694367dc48cb4955",
       "id": 1
     }
+  ],
+  "errors": [
+    {
+      "errorMessage": "Form is invalid",
+      "errorUrl": "/books/create",
+      "errorDate": "2021-08-24T23:08:18.563Z",
+      "ip": "::1",
+      "id": 1
+    },
+    {
+      "errorMessage": "Form is invalid",
+      "errorUrl": "/books/create",
+      "errorDate": "2021-08-25T01:27:15.848Z",
+      "errorIp": "::1",
+      "id": 2
+    }
   ]
 }

@@ -1,4 +1,5 @@
 import Route from '@ember/routing/route';
+import { get } from '@ember/object';
 
 export default Route.extend({
     queryParams: {
@@ -7,10 +8,15 @@ export default Route.extend({
         }
     },
     model({ search }) {
-        if (search) {
-          return this.store.query('speaker', { q: search });
+        try{
+            if (search) {
+                return this.store.query('speaker', { q: search });
+              }
+            return this.get('store').findAll('speaker');
         }
-      return this.get('store').findAll('speaker');
+        catch(e){
+            get(this, 'errorLogger').log(e.message, get(this, 'currentURL'));                
+        }
     },
 
     setupController() {
@@ -18,11 +24,11 @@ export default Route.extend({
     },
     
     actions: {
-        refreshSpeakers(){
-            //this.refresh();
-        },
-        loading() {
-            return false;
-        }
+        // refreshSpeakers(){
+        //     //this.refresh();
+        // },
+        // loading() {
+        //     return false;
+        // }
     }
 });
